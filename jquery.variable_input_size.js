@@ -7,13 +7,13 @@
 		
 		// traverse all nodes
 		this.each(function() {
-		  var $trimmer = $this.attr('value').length / 5;
+
 			var $this = $(this);
 			
 			if ($this.attr('value').length == 0)
 				$this.attr('size', params.default_size);
 			else
-				$this.attr('size', ($this.attr('value').length - trimmer));
+				$this.attr('size', ($this.attr('value').length - ($this.attr('value').length / 5)));
 			
 			$this.focus(function() {
 				
