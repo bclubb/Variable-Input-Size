@@ -7,37 +7,33 @@
 		
 		// traverse all nodes
 		this.each(function() {
+		  var $trimmer = $this.attr('value').length / 5;
 			var $this = $(this);
 			
-			var trimmer = Math.max(($this.attr('value').length / 4), 1);
-		  var dynamic_size = $this.attr('value').length - trimmer);
 			if ($this.attr('value').length == 0)
 				$this.attr('size', params.default_size);
 			else
-				$this.attr('size', dynamic_size);
+				$this.attr('size', ($this.attr('value').length - trimmer));
 			
 			$this.focus(function() {
-				var trimmer = Math.max(($this.attr('value').length / 4), 1);
-			  var dynamic_size = $this.attr('value').length - trimmer);
+				
 				if($this.attr('value').length > params.default_size)
-					$this.attr('size', dynamic_size);
+					$this.attr('size', $this.attr('value').length);
 				else
 					$this.attr('size', params.default_size);
 					
 				$this.keyup(function() {
 					if($this.attr('value').length > params.default_size)
-						$this.attr('size', dynamic_size);
+						$this.attr('size', $this.attr('value').length);
 					else
 						$this.attr('size', params.default_size);
 				});
 				
 			}).blur(function() {
-				var trimmer = Math.max(($this.attr('value').length / 4), 1);
-			  var dynamic_size = $this.attr('value').length - trimmer);
 				if ($this.attr('value').length == 0)
 					$this.attr('size', params.default_size);
 				else
-					$this.attr('size', dynamic_size);
+					$this.attr('size', $this.attr('value').length);
 			});
 
 		});
